@@ -41,6 +41,9 @@ public class RotateElements {
 		//for each in arraylist do
 		RotateTransition rtrans = new RotateTransition(Duration.millis(250),node);   //make a new rotateTransform 1/20 of a second duration
 		rtrans.setFromAngle(0);                                                  //start angle of rotation
+		for(int i =0; i<3; i++){
+			System.out.println("test");
+		}
 		switch(facing){
 		case 0:
 			switch(turnTo){
