@@ -43,6 +43,7 @@ public class RotateElements {
 		rtrans.setFromAngle(0);                                                  //start angle of rotation
 		for(int i =0; i<3; i++){
 			System.out.println("test");
+			System.out.println("hrgtdcnhtbgfdwegrhtgrfv");
 		}
 		switch(facing){
 		case 0:
