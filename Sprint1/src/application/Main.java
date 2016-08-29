@@ -104,6 +104,10 @@ public class Main extends Application{
 	boolean gameIsRunning = false;                                       //game state started or stoped
 	int currHitsOnTank =0;                                               //the amount of hits on the tank since last update
 
+	
+	////testing
+	
+	
 	public static void main(String[] args)//DO NOT CODE HERE
 	{                                     //DO NOT CODE HERE
 		Application.launch(args);         //DO NOT CODE HERE
