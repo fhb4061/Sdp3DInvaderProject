@@ -105,7 +105,7 @@ public class Main extends Application{
 	int currHitsOnTank =0;                                               //the amount of hits on the tank since last update
 
 	
-	////testing Jonathan lopeti
+	////testing Jonathan lopeti 3
 	
 	
 	public static void main(String[] args)//DO NOT CODE HERE
