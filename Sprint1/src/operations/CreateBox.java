@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 /**
  * this class is the class that creates 3D object for use in your games
@@ -53,6 +54,7 @@ public class CreateBox {
 	static PhongMaterial tankTex;
 	static PhongMaterial groundTex;
 	static PhongMaterial bullColor;                    */
+	
 	static WorldCoOrdinates wc;                                         //get world co-ordinate system
 	static ArrayList<Point3D> bo = new ArrayList<>();                       //ArrayList of points of world boundary
 	Random rand = new Random();
@@ -146,7 +148,7 @@ public class CreateBox {
 		
 	}
 /**
- * this method allows for different ground textures to used for different games or levels
+ * this method allows for different ground textures to be used for different games or levels
  * it is hard coded to the size of the 3D box that the games are in	
  * @param x            do not change
  * @param y            do not change
@@ -251,18 +253,78 @@ public class CreateBox {
 			root.getChildren().remove(i);
 		}
 	}
+	
+	public Group gameBox()
+	{
+		Group boarderGroup = new Group();
+		
+		PhongMaterial red = new PhongMaterial();
+		red.setDiffuseColor(Color.RED);
+		
+		Box leftBox = new Box(3, 500, 495);
+		Box rightBox = new Box(3, 500, 495);
+		Box topBox = new Box(990, 5, 495);
+		Box groundBox = new Box(990, 5, 495);
+		
+		int startX = 10;
+		int startY = 250;
+		int startZ = 1050;
+		
+		//this is the left side of the box
+		//leftBox.setMaterial(red);
+		leftBox.setTranslateX(startX);
+		leftBox.setTranslateY(startY);
+		leftBox.setTranslateZ(startZ);
+		leftBox.setRotationAxis(Rotate.Y_AXIS);
+		//leftBox.setRotate(5);
+		boarderGroup.getChildren().add(leftBox);
+		
+		// This is the ground box
+		startX = (int)bo.get(5).getX()+500;
+		startY = (int)bo.get(5).getY();
+		startZ = (int)bo.get(5).getZ();
+		startZ+=5;
+		startX+=5;
+		
+		groundBox.setTranslateX(startX-5);                            //set x location
+		groundBox.setTranslateY(startY);                             //set y location
+		groundBox.setTranslateZ(startZ-250);
+		//groundBox.setMaterial(red);
+		boarderGroup.getChildren().add(groundBox);
+		
+		//this is the top side of the box
+		startY = 45;
+		startZ = 1050;
+		//topBox.setMaterial(red);
+		topBox.setRotationAxis(Rotate.X_AXIS);
+		topBox.setRotate(-10);
+		topBox.setTranslateX(startX);
+		topBox.setTranslateY(startY);
+		topBox.setTranslateZ(startZ);
+		boarderGroup.getChildren().add(topBox);
+		
+		startX = 996;
+		startY = 250;
+		
+		rightBox.setTranslateX(startX);
+		rightBox.setTranslateY(startY);
+		rightBox.setTranslateZ(startZ);
+		boarderGroup.getChildren().add(rightBox);
+		
+		return boarderGroup;
+	}
 
 /**
  * create the game box that the enemies are inside of
  * DO NOT CHANGE ANYTHING IN THIS METHOD
- * talk to glen if you need to make cjhanges here	
+ * talk to glen if you need to make changes here	
  * @param root
  * @param xR
  * @param yR
  * @param zR
  * @param bS
  */
-	public Group gameBound(Group root, int xR, int yR, int zR, int bS){                  //build the boarder for the 3D game
+	public Group gameBound(int xR, int yR, int zR){                  //build the boarder for the 3D game
 		//size 5
 		Group boarderGroup = new Group();
 		int[] boarder  =  {3,10,9,11,12,8,10,9,11,1,12,2,12,3,12,14};                   //switch pattern move to location draw line, move draw, move draw
