@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 /**
  * this class is the class that creates 3D object for use in your games
@@ -20,9 +19,9 @@ import javafx.stage.Screen;
  *
  */
 public class CreateBox {
-	
+
 	static Group invaderGroup;                                               //group invaders together 
-/*	static Group boarderGroup;                                               //group boarders together
+	/*	static Group boarderGroup;                                               //group boarders together
 	static Group groundGroup;                                                //group tanks together
 	static Image image;                                                      //images used in box texture
 	static Image image2;
@@ -54,15 +53,15 @@ public class CreateBox {
 	static PhongMaterial tankTex;
 	static PhongMaterial groundTex;
 	static PhongMaterial bullColor;                    */
-	
+
 	static WorldCoOrdinates wc;                                         //get world co-ordinate system
 	static ArrayList<Point3D> bo = new ArrayList<>();                       //ArrayList of points of world boundary
 	Random rand = new Random();
 	Rectangle2D screen = Screen.getPrimary().getVisualBounds();
 	Img img = new Img();
-	
-	
-	
+
+
+
 	public CreateBox()
 	{
 		img.setupTextures();                                                    //apply images to textures
@@ -71,11 +70,11 @@ public class CreateBox {
 		invaderGroup = new Group();
 	}
 
-/**
- * 	make a bomb for enemy to drop
- * @param start
- * @return Cylinder 3D object
- */
+	/**
+	 * 	make a bomb for enemy to drop
+	 * @param start
+	 * @return Cylinder 3D object
+	 */
 	public Cylinder bomb(Point3D start){
 		Cylinder bull = new Cylinder(10,10,10);
 		bull.setTranslateX(start.getX());                            //set x location
@@ -84,11 +83,11 @@ public class CreateBox {
 		bull.setMaterial(img.getTexture(14));               //set light side texture
 		return bull;
 	}
-/**
- * make a bullet for the tank to fire	
- * @param start
- * @return Cylinder object for tank to fire
- */
+	/**
+	 * make a bullet for the tank to fire	
+	 * @param start
+	 * @return Cylinder object for tank to fire
+	 */
 	public Cylinder bullet(Point3D start){
 		Cylinder bull = new Cylinder(20,10,10);
 		bull.setTranslateX(start.getX());                            //set x location
@@ -97,10 +96,10 @@ public class CreateBox {
 		bull.setMaterial(img.getTexture(14));               //set light side texture
 		return bull;
 	}
-/**
- * create the box that is textured with the horizon	
- * @return box set to location of horizon
- */
+	/**
+	 * create the box that is textured with the horizon	
+	 * @return box set to location of horizon
+	 */
 	public Box horizon(){
 		Box horizion = new Box(5000,2000,5);
 		horizion.setTranslateX(480);                            //set x location
@@ -109,10 +108,10 @@ public class CreateBox {
 		horizion.setMaterial(img.getTexture(11));               //set light side texture
 		return horizion;
 	}
-/**
- * make the ground scene	
- * @return box set to location of ground
- */
+	/**
+	 * make the ground scene	
+	 * @return box set to location of ground
+	 */
 	public Box ground(){
 		Box ground = new Box(3500,5,1200);
 		ground.setTranslateX(480);                            //set x location
@@ -128,16 +127,16 @@ public class CreateBox {
 		boarderBox.setTranslateZ(z); 
 		boarderBox.setMaterial(img.getTexture(12));               //set light side texture
 		return boarderBox;
-		
+
 	}
-/**
- * make a single square box and return to caller (make tank)	
- * @param x    the location on the x axis the box will be
- * @param y    the location on the y axis the box will be
- * @param z    the location on the z axis the box will be
- * @param boxSize    the height width and length of the box made
- * @return  3D box at the location of x,y,z
- */
+	/**
+	 * make a single square box and return to caller (make tank)	
+	 * @param x    the location on the x axis the box will be
+	 * @param y    the location on the y axis the box will be
+	 * @param z    the location on the z axis the box will be
+	 * @param boxSize    the height width and length of the box made
+	 * @return  3D box at the location of x,y,z
+	 */
 	public Box singleBox(int x, int y, int z, int boxSize){
 		Box boarderBox = new Box(boxSize, boxSize, boxSize);                  //make 3D box
 		boarderBox.setTranslateX(x);                            //set x location
@@ -145,20 +144,20 @@ public class CreateBox {
 		boarderBox.setTranslateZ(z); 
 		boarderBox.setMaterial(img.getTexture(13));               //set light side texture
 		return boarderBox;
-		
+
 	}
-/**
- * this method allows for different ground textures to be used for different games or levels
- * it is hard coded to the size of the 3D box that the games are in	
- * @param x            do not change
- * @param y            do not change
- * @param z            do not change
- * @param boxSizeX     do not change
- * @param boxSizeY     do not change
- * @param boxSizeZ     do not change
- * @param imgNum       change to different textures for ground image
- * @return 3D box in the location of the ground
- */
+	/**
+	 * this method allows for different ground textures to be used for different games or levels
+	 * it is hard coded to the size of the 3D box that the games are in	
+	 * @param x            do not change
+	 * @param y            do not change
+	 * @param z            do not change
+	 * @param boxSizeX     do not change
+	 * @param boxSizeY     do not change
+	 * @param boxSizeZ     do not change
+	 * @param imgNum       change to different textures for ground image
+	 * @return 3D box in the location of the ground
+	 */
 	public Box groundBox(int x, int y, int z, int boxSizeX,int boxSizeY,int boxSizeZ, int imgNum){
 		Box boarderBox = new Box(boxSizeX, boxSizeY, boxSizeZ);                  //make 3D box
 		boarderBox.setTranslateX(x);                            //set x location
@@ -195,19 +194,19 @@ public class CreateBox {
 		boarderBox.setMaterial(pm3);               //set light side texture
 		return boarderBox;
 	}
-/**
- *
- * create a single enemy box called in a loop from main, its location is predefined
- *  to be inside the 3D world. change the number of enemies in the GameValuesYOURNAME class to
- *  increase decrease the number created	
- * @param x             predefined in WorldCoOrdinates class
- * @param y             predefined in WorldCoOrdinates class
- * @param z             predefined in WorldCoOrdinates class
- * @param bX            predefined in GameValuesInvader class
- * @param bY            predefined in GameValuesInvader class
- * @param bZ            predefined in GameValuesInvader class
- * @return              3D box to add to enemy ArrayList
- */
+	/**
+	 *
+	 * create a single enemy box called in a loop from main, its location is predefined
+	 *  to be inside the 3D world. change the number of enemies in the GameValuesYOURNAME class to
+	 *  increase decrease the number created	
+	 * @param x             predefined in WorldCoOrdinates class
+	 * @param y             predefined in WorldCoOrdinates class
+	 * @param z             predefined in WorldCoOrdinates class
+	 * @param bX            predefined in GameValuesInvader class
+	 * @param bY            predefined in GameValuesInvader class
+	 * @param bZ            predefined in GameValuesInvader class
+	 * @return              3D box to add to enemy ArrayList
+	 */
 	public Box singleEnemyBox(int x, int y, int z, int bX, int bY, int bZ){
 		Box boarderBox = new Box(bX, bY, bZ);                  //make 3D box
 		boarderBox.setTranslateX(x);                            //set x location
@@ -242,221 +241,96 @@ public class CreateBox {
 		pm3.setDiffuseMap(imgcurr);                //add texture to box on light side
 		boarderBox.setMaterial(pm3);               //set light side texture
 		return boarderBox;
-		
+
 	}
-/**
- * clear the entire scene of enemies
- * @param root
- */
+	/**
+	 * clear the entire scene of enemies
+	 * @param root
+	 */
 	public void clear(Group root){                                                    //remove 3D objects from screen 
 		for(int i =5;i<root.getChildren().size();i++){
 			root.getChildren().remove(i);
 		}
 	}
-	
+
+	/**
+	 * This the method that creates the 3D box
+	 * @return It returns the 3D box created and added to the scene.
+	 */
 	public Group gameBox()
 	{
 		Group boarderGroup = new Group();
-		
-		PhongMaterial red = new PhongMaterial();
-		red.setDiffuseColor(Color.RED);
-		
-		Box leftBox = new Box(3, 500, 495);
+		int[] sequence = {1,2,3,4};  // The sequence of how the box is drawn
+
+		Box leftBox = new Box(3, 500, 495); // These are the boxes that forms up the 3D box environment
 		Box rightBox = new Box(3, 500, 495);
 		Box topBox = new Box(990, 5, 495);
 		Box groundBox = new Box(990, 5, 495);
-		
-		int startX = 10;
-		int startY = 250;
-		int startZ = 1050;
-		
-		//this is the left side of the box
-		//leftBox.setMaterial(red);
-		leftBox.setTranslateX(startX);
-		leftBox.setTranslateY(startY);
-		leftBox.setTranslateZ(startZ);
-		leftBox.setRotationAxis(Rotate.Y_AXIS);
-		//leftBox.setRotate(5);
-		boarderGroup.getChildren().add(leftBox);
-		
-		// This is the ground box
-		startX = (int)bo.get(5).getX()+500;
-		startY = (int)bo.get(5).getY();
-		startZ = (int)bo.get(5).getZ();
-		startZ+=5;
-		startX+=5;
-		
-		groundBox.setTranslateX(startX-5);                            //set x location
-		groundBox.setTranslateY(startY);                             //set y location
-		groundBox.setTranslateZ(startZ-250);
-		//groundBox.setMaterial(red);
-		boarderGroup.getChildren().add(groundBox);
-		
-		//this is the top side of the box
-		startY = 45;
-		startZ = 1050;
-		//topBox.setMaterial(red);
-		topBox.setRotationAxis(Rotate.X_AXIS);
-		topBox.setRotate(-10);
-		topBox.setTranslateX(startX);
-		topBox.setTranslateY(startY);
-		topBox.setTranslateZ(startZ);
-		boarderGroup.getChildren().add(topBox);
-		
-		startX = 996;
-		startY = 250;
-		
-		rightBox.setTranslateX(startX);
-		rightBox.setTranslateY(startY);
-		rightBox.setTranslateZ(startZ);
-		boarderGroup.getChildren().add(rightBox);
-		
+
+		int startZ = (((int)bo.get(4).getZ() - (int)bo.get(0).getZ()) / 2) + (int)bo.get(0).getZ(); // This value is fixed
+		int startX = 0;
+		int startY = 0;
+
+		for(int i = 0; i < 4; i++)
+		{
+			switch(sequence[i])
+			{
+			case 1:
+				startX = (int)bo.get(0).getX();
+				startY = 250; 					// from the World coordination(case(1)-case(0)) / 2
+				leftBox.setTranslateX(startX);  // This is the left side of the box
+				leftBox.setTranslateY(startY);
+				leftBox.setTranslateZ(startZ);
+				boarderGroup.getChildren().add(leftBox);
+				;break;
+			case 2:
+				startX = ((int)bo.get(2).getX()-(int)bo.get(0).getX()) / 2;
+				startY += 250; 					//goes to the ground floor
+				groundBox.setTranslateX(startX);// This is the ground side of the box
+				groundBox.setTranslateY(startY);
+				groundBox.setTranslateZ(startZ);
+				boarderGroup.getChildren().add(groundBox);
+				;break;
+			case 3:
+				startX += ((int)bo.get(2).getX()-(int)bo.get(0).getX()) / 2;
+				startY = startY - 250;
+				rightBox.setTranslateX(startX); // This is the right side of the box
+				rightBox.setTranslateY(startY);
+				rightBox.setTranslateZ(startZ);
+				boarderGroup.getChildren().add(rightBox);
+				;break;
+			case 4:
+				startY = 0;
+				startX = ((int)bo.get(3).getX()- (int)bo.get(0).getX()) / 2;
+				topBox.setTranslateX(startX); // This is the top side of the box
+				topBox.setTranslateY(startY);
+				topBox.setTranslateZ(startZ);
+				boarderGroup.getChildren().add(topBox);
+				;break;
+			}
+
+		}
 		return boarderGroup;
 	}
-
-/**
- * create the game box that the enemies are inside of
- * DO NOT CHANGE ANYTHING IN THIS METHOD
- * talk to glen if you need to make changes here	
- * @param root
- * @param xR
- * @param yR
- * @param zR
- * @param bS
- */
-	public Group gameBound(int xR, int yR, int zR){                  //build the boarder for the 3D game
-		//size 5
-		Group boarderGroup = new Group();
-		int[] boarder  =  {3,10,9,11,12,8,10,9,11,1,12,2,12,3,12,14};                   //switch pattern move to location draw line, move draw, move draw
-		int startX = xR;
-		int startY = yR;
-		int startZ = zR;
-		int boxSize = 5;
-
-		for(int x =0; x<16;x++){        //25
-			Box temp = new Box();
-			switch(boarder[x]){
-			case 0:                                                                  //move to top left front corner
-				startX = (int)bo.get(0).getX();
-				startY = (int)bo.get(0).getY();
-				startZ = (int)bo.get(0).getZ();
-				break;
-			case 1:                                                                  //move to bottom left front corner
-				startX = (int)bo.get(1).getX();
-				startY = (int)bo.get(1).getY();
-				startZ = (int)bo.get(1).getZ();
-				;break;
-			case 2:                                                                  //move to bottom right front corner
-				startX = (int)bo.get(2).getX();
-				startY = (int)bo.get(2).getY();
-				startZ = (int)bo.get(2).getZ();
-				break;
-			case 3:                                                                  //move to top right front corner
-				startX = (int)bo.get(3).getX();
-				startY = (int)bo.get(3).getY();
-				startZ = (int)bo.get(3).getZ();
-				break;
-			case 4:                                                                  //move to top right back corner
-				startX = (int)bo.get(4).getX();
-				startY = (int)bo.get(4).getY();
-				startZ = (int)bo.get(4).getZ();
-				break;
-			case 5:                                                                  //move to bottom left back corner
-				startX = (int)bo.get(5).getX();
-				startY = (int)bo.get(5).getY();
-				startZ = (int)bo.get(5).getZ();
-				break;
-			case 6:                                                                  //move to bottom right back corner
-				startX = (int)bo.get(6).getX();
-				startY = (int)bo.get(6).getY();
-				startZ = (int)bo.get(6).getZ();
-				break;
-			case 7:                                                                  //move to top right back corner
-				startX = (int)bo.get(7).getX();
-				startY = (int)bo.get(7).getY();
-				startZ = (int)bo.get(7).getZ();
-				break;
-			case 8:                                                                   //draw line of boxes left to right
-				for(int i =0;i<wc.getWorldWidth();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startX +=5;
-				}
-				break;
-			case 9:                                                                    //draw line of boxes right to left
-				for(int i =0;i<wc.getWorldWidth();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startX -=5;
-				}
-				break;
-			case 10:                                                                    //draw line of boxes top to bottom
-				for(int i =0;i<wc.getWorldHeight();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startY +=5;
-				}
-				break;
-			case 11:                                                                   //draw line of boxes bottom to top    
-				for(int i =0;i<wc.getWorldHeight();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startY -=5;
-				}
-				break;
-			case 12:                                                                   //draw line of boxes front to back
-				for(int i =0;i<wc.getWorldDepth();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startZ +=5;
-				}
-				break;
-			case 13:                                                                  //draw line of boxes back to front
-				for(int i =0;i<wc.getWorldDepth();i++){
-					temp = singleBox(startX, startY, startZ, boxSize);
-					boarderGroup.getChildren().add(temp);
-					startZ -=5;
-				}
-				break;
-			case 14:                                                                 //draw ground box
-				startX = (int)bo.get(5).getX()+500;
-				startY = (int)bo.get(5).getY();
-				startZ = (int)bo.get(5).getZ();
-				startZ+=5;
-				startX+=5;
-	     		Box randBox = new Box(990, 5, 495);                  //make 3D box
-				randBox.setTranslateX(startX-5);                            //set x location
-				randBox.setTranslateY(startY);                             //set y location
-				randBox.setTranslateZ(startZ-250); 
-				PhongMaterial texMat = new PhongMaterial();  //texture material
-				texMat.setDiffuseColor(Color.BEIGE);        //set dark side color
-				texMat.setDiffuseMap(img.getImg(3));                //add texture to box on light side
-				randBox.setMaterial(texMat);               //set light side texture
-				boarderGroup.getChildren().add(randBox);             
-
-			}
-		}
-		return boarderGroup;	
-	}
-/**
- * OLD UNUSED method for making a swarm of invaders
- * uses invader to generate a single invader at a time 
- * to add to a group of invaders in a predefined pattern
- * uses an array to arrange the single invaders into a patterned group	
- * @param root
- * @return group of invaders in a patttern
- */
+	/**
+	 * OLD UNUSED method for making a swarm of invaders
+	 * uses invader to generate a single invader at a time 
+	 * to add to a group of invaders in a predefined pattern
+	 * uses an array to arrange the single invaders into a patterned group	
+	 * @param root
+	 * @return group of invaders in a pattern
+	 */
 	public Group invaderSwarm(Group root){            //make a group of invaders in a pattern of an invader
 		int posInvaders = 0;
 		int posY = 0;
 		int[][] shape  = {{0,0,0,1,1,0,0,0}          //array of switches to make differnt invaders for different places
-						 ,{2,0,2,2,2,2,0,2}
-						 ,{0,3,0,3,3,0,3,0}
-						 ,{0,4,4,4,4,4,4,0}
-						 ,{0,5,0,0,0,0,5,0}
-						 ,{0,6,0,6,6,0,6,0}
-						 ,{7,0,0,0,0,0,0,7}
-						 ,{8,0,0,0,0,0,0,8}};
+		,{2,0,2,2,2,2,0,2}
+		,{0,3,0,3,3,0,3,0}
+		,{0,4,4,4,4,4,4,0}
+		,{0,5,0,0,0,0,5,0}
+		,{0,6,0,6,6,0,6,0}
+		,{7,0,0,0,0,0,0,7}
+		,{8,0,0,0,0,0,0,8}};
 		for(int y =0;y<2;y++){
 			for(int x=0;x<8;x++){
 				switch(shape[y][x]){
@@ -494,25 +368,25 @@ public class CreateBox {
 		}
 		return invaderGroup;                                                   //return finished group of invaders
 	}
-/**
- * OLD UNUSED method for testing
- * this method generates a single invader from an array pattern
- * it returns a group to the caller in the shape of a single invader	
- * @param root
- * @param image5
- * @param boxSize
- * @param curX
- * @param curY
- */
+	/**
+	 * OLD UNUSED method for testing
+	 * this method generates a single invader from an array pattern
+	 * it returns a group to the caller in the shape of a single invader	
+	 * @param root
+	 * @param image5
+	 * @param boxSize
+	 * @param curX
+	 * @param curY
+	 */
 	public void invader(Group root, Image image5,int boxSize, int curX, int curY){    //make individual invaders
 		int[][] shape  = {{0,0,0,0,0,0,0,0}                                           //pattern for switch to make each invader
-		                 ,{0,0,0,0,0,0,0,0}
-		                 ,{0,0,0,0,0,0,0,0}
-		                 ,{0,1,1,1,1,1,1,0}
-		                 ,{0,1,0,0,0,0,1,0}
-		                 ,{0,1,0,1,1,0,1,0}
-		                 ,{1,0,0,0,0,0,0,1}
-		                 ,{1,0,0,0,0,0,0,1}};
+		,{0,0,0,0,0,0,0,0}
+		,{0,0,0,0,0,0,0,0}
+		,{0,1,1,1,1,1,1,0}
+		,{0,1,0,0,0,0,1,0}
+		,{0,1,0,1,1,0,1,0}
+		,{1,0,0,0,0,0,0,1}
+		,{1,0,0,0,0,0,0,1}};
 		int currX = curX;
 		int currY = curY;
 		int currZ = 1200;

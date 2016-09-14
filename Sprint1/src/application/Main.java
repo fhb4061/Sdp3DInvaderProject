@@ -201,7 +201,6 @@ public class Main extends Application{
 		                  
 		root.getChildren().add(boxOP.ground());                //add ground to scene
 		root.getChildren().add(boxOP.horizon());               //add background to scene
-		root.getChildren().add(boxOP.gameBound(0, 0, 800));
 		root.getChildren().add(boxOP.gameBox());
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());      //add css to ui
 		stage.setScene(scene);                                                     // Add the Scene to the Stage
