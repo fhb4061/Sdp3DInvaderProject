@@ -163,14 +163,23 @@ public class Main extends Application{
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {                        //key events handled here
 			@Override
 			public void handle(KeyEvent event) {
-				                                           //key imputs here
-				
-				
-				
-				
-				
-				
-				
+				//key inputs here
+				Node tank = tankGroup.getChildren().get(0);//Create Tank's node
+                switch (event.getCode()) {//Switch case for the button
+                case COMMA:  //When user press Comma's button, it will release bullet out of the tank
+                   
+                    bulletStart = new Point3D(tank.getTranslateX(),
+                             tank.getTranslateY(), tank.getTranslateZ()); //Create 3D bullet
+                    //Create a for loop to release more bullet or laser-like
+                    for (int i = 0; i < 30; i++) {
+                        bulletGroup.getChildren().add(boxOP.bullet(bulletStart));//The bullet will be add
+                         //in the 3D scene.
+                    }
+                    break;
+
+                default:
+                    break;
+                }
 			}
 		});
 		scene.setOnMouseClicked((event)->{                                          //make picked objects red
